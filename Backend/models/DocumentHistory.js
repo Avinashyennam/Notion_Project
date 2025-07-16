@@ -1,5 +1,5 @@
 // models/DocumentHistory.js
-const mongoose = require('mongoose');
+import mongoose, { model } from 'mongoose';
 
 const DocumentHistorySchema = new mongoose.Schema({
   document: { type: mongoose.Schema.Types.ObjectId, ref: 'Document', required: true },
@@ -8,4 +8,5 @@ const DocumentHistorySchema = new mongoose.Schema({
   contentSnapshot: { type: mongoose.Schema.Types.Mixed },
 }, { timestamps: true });
 
-module.exports = mongoose.model('DocumentHistory', DocumentHistorySchema);
+// module.exports = mongoose.model('DocumentHistory', DocumentHistorySchema);
+export default model('DocumentHistory', DocumentHistorySchema);

@@ -1,8 +1,8 @@
-const DocumentHistory = require('../models/DocumentHistory');
-const Document = require('../models/Document');
+import DocumentHistory from '../models/DocumentHistory.js';
+import Document from '../models/Document.js';
 
 // Get document history by document ID
-exports.getDocumentHistory = async (req, res) => {
+const getDocumentHistory = async (req, res) => {
   try {
     const { documentId } = req.params;
 
@@ -18,7 +18,7 @@ exports.getDocumentHistory = async (req, res) => {
 };
 
 // Restore a specific version
-exports.restoreVersion = async (req, res) => {
+const restoreVersion = async (req, res) => {
   try {
     const { historyId } = req.params;
 
@@ -41,3 +41,5 @@ exports.restoreVersion = async (req, res) => {
     res.status(500).json({ error: 'Failed to restore version' });
   }
 };
+
+export {restoreVersion, getDocumentHistory}

@@ -1,14 +1,14 @@
 // routes/documentRoutes.js
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const auth = require('../middleware/auth');
-const docCtrl = require('../controllers/documentController');
-const checkPermission = require('../middleware/checkPermission');
+import auth from '../middlewares/authMiddleware.js';
+import {getDocumentsByUser, deleteDocument, updateDocument, getDocumentById, createDocument} from '../controllers/documentController.js';
+import checkPermission from '../middlewares/checkPermission.js';
 
-router.post('/', auth, docCtrl.createDocument);
-router.get('/:id', auth, checkPermission('view'), docCtrl.getDocumentById);
-router.put('/:id', auth, checkPermission('edit'), docCtrl.updateDocument);
-router.delete('/:id', auth, docCtrl.deleteDocument);
-router.get('/user/me', auth, docCtrl.getDocumentsByUser);
+router.post('/', auth, createDocument);
+router.get('/:id', auth, checkPermission('view'), getDocumentById);
+router.put('/:id', auth, checkPermission('edit'), updateDocument);
+router.delete('/:id', auth, deleteDocument);
+router.get('/user/me', auth, getDocumentsByUser);
 
-module.exports = router;
+export default router;

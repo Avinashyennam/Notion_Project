@@ -1,5 +1,5 @@
 // models/Comment.js
-const mongoose = require('mongoose');
+import mongoose, { model } from 'mongoose';
 
 const CommentSchema = new mongoose.Schema({
   text: { type: String, required: true },
@@ -8,4 +8,5 @@ const CommentSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Comment', CommentSchema);
+// module.exports = mongoose.model('Comment', CommentSchema);
+export default model('Comment', CommentSchema);

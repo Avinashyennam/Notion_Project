@@ -1,8 +1,8 @@
-const Comment = require('../models/Comment');
-const Document = require('../models/Document');
+import Comment from '../models/Comment.js';
+import Document from '../models/Document.js';
 
 // Create a comment
-exports.createComment = async (req, res) => {
+const createComment = async (req, res) => {
   try {
     const { documentId } = req.params;
     const { text, position } = req.body;
@@ -26,7 +26,7 @@ exports.createComment = async (req, res) => {
 };
 
 // Get all comments on a document
-exports.getComments = async (req, res) => {
+const getComments = async (req, res) => {
   try {
     const { documentId } = req.params;
 
@@ -42,7 +42,7 @@ exports.getComments = async (req, res) => {
 };
 
 // Delete a comment (by author or document owner)
-exports.deleteComment = async (req, res) => {
+const deleteComment = async (req, res) => {
   try {
     const { commentId } = req.params;
 
@@ -64,3 +64,5 @@ exports.deleteComment = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete comment' });
   }
 };
+
+export {deleteComment, getComments, createComment}

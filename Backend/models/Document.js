@@ -1,5 +1,5 @@
 // models/Document.js
-const mongoose = require('mongoose');
+import mongoose, { model } from 'mongoose';
 
 const DocumentSchema = new mongoose.Schema({
   title: { type: String, default: 'Untitled' },
@@ -8,4 +8,5 @@ const DocumentSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Document', DocumentSchema);
+// module.exports = mongoose.model('Document', DocumentSchema);
+export default model('Document', DocumentSchema);

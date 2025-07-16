@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 // const auth = require('../middleware/auth');
-const shareCtrl = require('../controllers/shareController');
+import {getSharedUsers, shareDocument} from '../controllers/shareController.js';
 
-router.post('/:documentId/share', shareCtrl.shareDocument);
-router.get('/:documentId/shared-users', shareCtrl.getSharedUsers);
+router.post('/:documentId/share', shareDocument);
+router.get('/:documentId/shared-users', getSharedUsers);
 
-module.exports = router;
+export default router;

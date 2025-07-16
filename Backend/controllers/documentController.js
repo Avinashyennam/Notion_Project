@@ -1,7 +1,7 @@
-const Document = require('../models/Document');
+import Document from '../models/Document.js';
 
 // Create a new document
-exports.createDocument = async (req, res) => {
+const createDocument = async (req, res) => {
   try {
     const { title, content, isPublic } = req.body;
     const ownerId = req.user._id; // assumes you're using auth middleware that sets req.user
@@ -22,7 +22,7 @@ exports.createDocument = async (req, res) => {
 };
 
 // Get a document by ID
-exports.getDocumentById = async (req, res) => {
+const getDocumentById = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -39,7 +39,7 @@ exports.getDocumentById = async (req, res) => {
 };
 
 // Update a document
-exports.updateDocument = async (req, res) => {
+const updateDocument = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content, isPublic } = req.body;
@@ -80,7 +80,7 @@ exports.updateDocument = async (req, res) => {
 };
 
 // Delete a document
-exports.deleteDocument = async (req, res) => {
+const deleteDocument = async (req, res) => {
   try {
     const { id } = req.params;
     const doc = await Document.findById(id);
@@ -100,7 +100,7 @@ exports.deleteDocument = async (req, res) => {
 };
 
 // Get all documents for a user
-exports.getDocumentsByUser = async (req, res) => {
+const getDocumentsByUser = async (req, res) => {
   try {
     const userId = req.user._id;
 
@@ -111,3 +111,5 @@ exports.getDocumentsByUser = async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch documents' });
   }
 };
+
+export {getDocumentsByUser, deleteDocument, updateDocument, getDocumentById, createDocument}

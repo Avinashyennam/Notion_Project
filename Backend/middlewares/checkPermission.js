@@ -1,6 +1,6 @@
 // middleware/checkPermission.js
-const SharedDocument = require('../models/SharedDocument');
-const Document = require('../models/Document');
+import SharedDocument from '../models/SharedDocument.js';
+import Document from '../models/Document.js';
 
 const checkPermission = (requiredPermission = 'view') => {
   return async (req, res, next) => {
@@ -31,4 +31,4 @@ const checkPermission = (requiredPermission = 'view') => {
   };
 };
 
-module.exports = checkPermission;
+export default checkPermission;

@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/Users.js";
 import { signupschema, loginschema } from "../user.validator.js";
-import { verifyToken } from "../middlewares/authMiddleware.js";
+import verifyToken  from "../middlewares/authMiddleware.js";
 import dotenv from "dotenv";
 dotenv.config();
 

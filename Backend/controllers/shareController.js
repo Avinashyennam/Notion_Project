@@ -1,9 +1,9 @@
-const SharedDocument = require('../models/SharedDocument');
-const Document = require('../models/Document');
-const User = require('../models/User');
+import SharedDocument from '../models/SharedDocument.js';
+import Document from '../models/Document.js';
+import User from '../models/Users.js';
 
 // Share a document with a user
-exports.shareDocument = async (req, res) => {
+const shareDocument = async (req, res) => {
   try {
     const { documentId } = req.params;
     const { email, permission } = req.body;
@@ -42,7 +42,7 @@ exports.shareDocument = async (req, res) => {
 };
 
 // Get all users document is shared with
-exports.getSharedUsers = async (req, res) => {
+const getSharedUsers = async (req, res) => {
   try {
     const { documentId } = req.params;
 
@@ -53,3 +53,5 @@ exports.getSharedUsers = async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch shared users' });
   }
 };
+
+export {getSharedUsers, shareDocument}

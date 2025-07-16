@@ -7,10 +7,10 @@ import authroutes from "./Routes/auth.js";
 import protectedRoutes from './Routes/Protected.js';
 import connectDB from "./config/db.js";
 
-const documentRoutes = require('./Routes/documentRoutes');
-const sharedDocRoutes = require("./Routes/sharedDocuments.js");
-const docHistoryRoutes = require('./Routes/historyRoutes');
-const commentRoutes = require('./Routes/commentRoutes');
+import documentRoutes from './Routes/documentRoutes.js';
+import sharedDocRoutes from './Routes/sharedDocuments.js';
+import docHistoryRoutes from './Routes/docHistory.js';
+import commentRoutes from './Routes/commentRoutes.js';
 
 // dotenv.config();
 const app=express();

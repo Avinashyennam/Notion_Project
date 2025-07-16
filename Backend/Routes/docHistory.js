@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 // const auth = require('../middleware/auth');
-const historyCtrl = require('../controllers/historyController');
+import {restoreVersion, getDocumentHistory} from '../controllers/historyController.js';
 
 // Get history of a document
-router.get('/', historyCtrl.getDocumentHistory);
+router.get('/', getDocumentHistory);
 // Restore from history
-router.post('/restore/:historyId', historyCtrl.restoreVersion);
+router.post('/restore/:historyId', restoreVersion);
 
-module.exports = router;
+export default router;

@@ -1,15 +1,15 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router({ mergeParams: true });
 // const auth = require('../middleware/auth');
-const commentCtrl = require('../controllers/commentController');
+import {deleteComment, getComments, createComment} from'../controllers/commentController.js';
 
 // Create comment on document
-router.post('/', commentCtrl.createComment);
+router.post('/', createComment);
 
 // Get all comments for a document
-router.get('/', commentCtrl.getComments);
+router.get('/', getComments);
 
 // Delete a comment (auth required, must be author or document owner)
-router.delete('/:commentId', commentCtrl.deleteComment);
+router.delete('/:commentId', deleteComment);
 
-module.exports = router;
+export default router;
